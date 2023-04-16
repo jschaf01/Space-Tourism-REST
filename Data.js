@@ -3,11 +3,12 @@ var cors = require('cors')
 var fs = require('fs');
 var path = require('node:path');
 var app = express()
+const PORT = process.env.PORT || 3030;
 
 app.use(cors())
 
 app.get('/destination/:name', function (req, res) {
-    const fn = path.join('data.json');
+     fn = path.join('data.json');
     fs.readFile( fn, 'utf8', function (err, data) {
         const destinations = JSON.parse(data).destinations;
         var destination = destinations.find(x => x.name === req.params.name);
@@ -42,8 +43,11 @@ app.get('/technology/:name', function (req, res) {
     });
 })
 
-app.listen(3000, function () {
-  console.log('CORS-enabled web server listening on port 3000')
-})
+// your code
+
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
+});
+
 
 
