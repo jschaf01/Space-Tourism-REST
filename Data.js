@@ -139,11 +139,11 @@ app.get('/crew/:role', function (req, res) {
 
     //     res.json(member);
     // });
-    var member = data.crew.find(x => x.name === req.params.name);
-    if (!member)
-        member = data.crew[0];
+    var crew = data.crew.find(x => x.role === req.params.role);
+    if (!crew)
+    crew = data.crew[0];
 
-    res.json(member);
+    res.json(crew);
 
 })
 
@@ -157,9 +157,9 @@ app.get('/technology/:name', function (req, res) {
 
     //     res.json(technology);
     // });
-    var technology = data.technologies.find(x => x.name === req.params.name);
+    var technology = data.technology.find(x => x.name === req.params.name);
     if (!technology)
-    technology = technologies[0];
+        technology = data.technology[0];
 
     res.json(technology);
 
